@@ -1,0 +1,101 @@
+
+
+entity Alumno {
+
+	dni String
+    nombre String
+    apellido String 
+    
+}
+
+entity Tutor {
+
+	dni String
+    nombre String
+    apellido String 
+    
+}
+
+entity Director {
+
+	dni String
+    nombre String
+    apellido String 
+    
+}
+
+entity Ciclo {
+
+	
+    nombre String 
+    clave String
+ 
+}
+
+entity Centro {
+
+	denominacion String
+    codigo String
+    domicilio String
+    localidad String
+    municipio String
+    provincia String
+    codigoPostal Integer
+}
+
+entity Empresa {
+
+    numeroConvenio String
+    localidad String
+    tutor String
+    
+    
+    
+}
+
+
+
+
+relationship OneToOne{
+	Alumno to Tutor
+}
+
+relationship ManyToOne{
+	Tutor to Alumno
+}
+
+relationship OneToOne{
+	Alumno to Centro
+}
+relationship ManyToOne{
+	Centro to Alumno 
+}
+
+relationship OneToOne{
+	Centro to Director
+}
+
+relationship OneToOne{
+	Director to Centro
+}
+
+relationship OneToMany{
+	Ciclo to Alumno
+}
+
+relationship OneToOne{
+	 Alumno to Ciclo
+}
+
+relationship OneToMany{
+	 Centro to Empresa
+}
+
+relationship OneToMany{
+	 Centro to Ciclo
+}
+
+
+
+paginate all with pagination
+service all with serviceImpl
