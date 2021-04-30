@@ -1,0 +1,98 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-centro-heading" data-cy="CentroCreateUpdateHeading" jhiTranslate="proyectoTfc1App.centro.home.createOrEditLabel">
+        Create or edit a Centro
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="proyectoTfc1App.centro.denominacion" for="field_denominacion">Denominacion</label>
+          <input
+            type="text"
+            class="form-control"
+            name="denominacion"
+            id="field_denominacion"
+            data-cy="denominacion"
+            formControlName="denominacion"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="proyectoTfc1App.centro.codigo" for="field_codigo">Codigo</label>
+          <input type="text" class="form-control" name="codigo" id="field_codigo" data-cy="codigo" formControlName="codigo" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="proyectoTfc1App.centro.domicilio" for="field_domicilio">Domicilio</label>
+          <input type="text" class="form-control" name="domicilio" id="field_domicilio" data-cy="domicilio" formControlName="domicilio" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="proyectoTfc1App.centro.localidad" for="field_localidad">Localidad</label>
+          <input type="text" class="form-control" name="localidad" id="field_localidad" data-cy="localidad" formControlName="localidad" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="proyectoTfc1App.centro.municipio" for="field_municipio">Municipio</label>
+          <input type="text" class="form-control" name="municipio" id="field_municipio" data-cy="municipio" formControlName="municipio" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="proyectoTfc1App.centro.provincia" for="field_provincia">Provincia</label>
+          <input type="text" class="form-control" name="provincia" id="field_provincia" data-cy="provincia" formControlName="provincia" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="proyectoTfc1App.centro.codigoPostal" for="field_codigoPostal"
+            >Codigo Postal</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="codigoPostal"
+            id="field_codigoPostal"
+            data-cy="codigoPostal"
+            formControlName="codigoPostal"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="proyectoTfc1App.centro.director" for="field_director">Director</label>
+          <select class="form-control" id="field_director" data-cy="director" name="director" formControlName="director">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="directorOption.id === editForm.get('director')!.value?.id ? editForm.get('director')!.value : directorOption"
+              *ngFor="let directorOption of directorsCollection; trackBy: trackDirectorById"
+            >
+              {{ directorOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

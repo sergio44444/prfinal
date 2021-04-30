@@ -1,0 +1,27 @@
+{
+  "proyectoTfc1App": {
+    "director": {
+      "home": {
+        "title": "Directors",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Director",
+        "createOrEditLabel": "Crear o editar Director",
+        "notFound": "Ningún Directors encontrado"
+      },
+      "created": "Un nuevo Director ha sido creado con el identificador {{ param }}",
+      "updated": "Un Director ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Director ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Director {{ id }}?"
+      },
+      "detail": {
+        "title": "Director"
+      },
+      "id": "ID",
+      "dni": "Dni",
+      "nombre": "Nombre",
+      "apellido": "Apellido",
+      "centro": "Centro"
+    }
+  }
+}

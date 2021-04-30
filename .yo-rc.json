@@ -41,6 +41,8 @@
     "packageFolder": "com/mycompany/myapp",
     "jwtSecretKey": "MjdlOTgxOWNkOTg3M2Q1Njk4NDIwZGYwZTlkMmI2NzBiMmM3MDQ3ZDIzYjNhZDgyMWU5YjQ1M2Q3OWRlNzgxYjM0MGM4YmMwZWJjZGM1NDk3ZDZkNjhiOGRkOWUzODYyN2RiMWExNTdkYTEzMjRlZTRkYTgwOTVhNDkwMDkzOGE=",
     "clientPackageManager": "npm",
-    "languages": ["es", "en"]
+    "languages": ["es", "en"],
+    "entities": ["Alumno", "Tutor", "Director", "Ciclo", "Centro", "Empresa"],
+    "lastLiquibaseTimestamp": 1619519786000
   }
 }

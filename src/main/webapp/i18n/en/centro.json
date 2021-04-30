@@ -1,0 +1,34 @@
+{
+  "proyectoTfc1App": {
+    "centro": {
+      "home": {
+        "title": "Centros",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Centro",
+        "createOrEditLabel": "Create or edit a Centro",
+        "notFound": "No Centros found"
+      },
+      "created": "A new Centro is created with identifier {{ param }}",
+      "updated": "A Centro is updated with identifier {{ param }}",
+      "deleted": "A Centro is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Centro {{ id }}?"
+      },
+      "detail": {
+        "title": "Centro"
+      },
+      "id": "ID",
+      "denominacion": "Denominacion",
+      "codigo": "Codigo",
+      "domicilio": "Domicilio",
+      "localidad": "Localidad",
+      "municipio": "Municipio",
+      "provincia": "Provincia",
+      "codigoPostal": "Codigo Postal",
+      "director": "Director",
+      "tutor": "Tutor",
+      "ciclo": "Ciclo",
+      "alumno": "Alumno"
+    }
+  }
+}

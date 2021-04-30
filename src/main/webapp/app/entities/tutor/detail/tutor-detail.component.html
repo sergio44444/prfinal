@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tutor">
+      <h2 data-cy="tutorDetailsHeading"><span jhiTranslate="proyectoTfc1App.tutor.detail.title">Tutor</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tutor.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.tutor.dni">Dni</span></dt>
+        <dd>
+          <span>{{ tutor.dni }}</span>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.tutor.nombre">Nombre</span></dt>
+        <dd>
+          <span>{{ tutor.nombre }}</span>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.tutor.apellido">Apellido</span></dt>
+        <dd>
+          <span>{{ tutor.apellido }}</span>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.tutor.centro">Centro</span></dt>
+        <dd>
+          <div *ngIf="tutor.centro">
+            <a [routerLink]="['/centro', tutor.centro?.id, 'view']">{{ tutor.centro?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tutor', tutor.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

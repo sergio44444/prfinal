@@ -56,44 +56,42 @@ entity Empresa {
 
 
 
-relationship OneToOne{
+relationship ManyToOne{
 	Alumno to Tutor
 }
 
-relationship ManyToOne{
-	Tutor to Alumno
-}
 
-relationship OneToOne{
+
+
+relationship ManyToOne{
 	Alumno to Centro
 }
+
 relationship ManyToOne{
-	Centro to Alumno 
+	Alumno to Empresa
 }
+
 
 relationship OneToOne{
 	Centro to Director
 }
 
-relationship OneToOne{
-	Director to Centro
-}
 
 relationship OneToMany{
 	Ciclo to Alumno
 }
 
-relationship OneToOne{
-	 Alumno to Ciclo
-}
+
 
 relationship OneToMany{
-	 Centro to Empresa
+	 Centro to Tutor
 }
 
 relationship OneToMany{
 	 Centro to Ciclo
 }
+
+
 
 
 

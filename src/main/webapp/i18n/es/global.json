@@ -6,7 +6,13 @@
       "home": "Inicio",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
-        "main": "Entidades",
+        "main": "Categorias",
+        "alumno": "Alumno",
+        "tutor": "Tutor",
+        "director": "Director",
+        "ciclo": "Ciclo",
+        "centro": "Centro",
+        "empresa": "Empresa",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

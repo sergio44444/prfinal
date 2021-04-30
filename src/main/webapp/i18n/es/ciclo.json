@@ -1,0 +1,27 @@
+{
+  "proyectoTfc1App": {
+    "ciclo": {
+      "home": {
+        "title": "Ciclos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Ciclo",
+        "createOrEditLabel": "Crear o editar Ciclo",
+        "notFound": "Ningún Ciclos encontrado"
+      },
+      "created": "Un nuevo Ciclo ha sido creado con el identificador {{ param }}",
+      "updated": "Un Ciclo ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Ciclo ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Ciclo {{ id }}?"
+      },
+      "detail": {
+        "title": "Ciclo"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "clave": "Clave",
+      "alumno": "Alumno",
+      "centro": "Centro"
+    }
+  }
+}

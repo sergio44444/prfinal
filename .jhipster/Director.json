@@ -1,0 +1,36 @@
+{
+  "name": "Director",
+  "fields": [
+    {
+      "fieldName": "dni",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apellido",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "centro",
+      "otherEntityRelationshipName": "director",
+      "relationshipName": "centro",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "director",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210427103623"
+}

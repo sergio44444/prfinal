@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="alumno">
+      <h2 data-cy="alumnoDetailsHeading"><span jhiTranslate="proyectoTfc1App.alumno.detail.title">Alumno</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ alumno.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.alumno.dni">Dni</span></dt>
+        <dd>
+          <span>{{ alumno.dni }}</span>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.alumno.nombre">Nombre</span></dt>
+        <dd>
+          <span>{{ alumno.nombre }}</span>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.alumno.apellido">Apellido</span></dt>
+        <dd>
+          <span>{{ alumno.apellido }}</span>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.alumno.tutor">Tutor</span></dt>
+        <dd>
+          <div *ngIf="alumno.tutor">
+            <a [routerLink]="['/tutor', alumno.tutor?.id, 'view']">{{ alumno.tutor?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.alumno.centro">Centro</span></dt>
+        <dd>
+          <div *ngIf="alumno.centro">
+            <a [routerLink]="['/centro', alumno.centro?.id, 'view']">{{ alumno.centro?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.alumno.empresa">Empresa</span></dt>
+        <dd>
+          <div *ngIf="alumno.empresa">
+            <a [routerLink]="['/empresa', alumno.empresa?.id, 'view']">{{ alumno.empresa?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.alumno.ciclo">Ciclo</span></dt>
+        <dd>
+          <div *ngIf="alumno.ciclo">
+            <a [routerLink]="['/ciclo', alumno.ciclo?.id, 'view']">{{ alumno.ciclo?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/alumno', alumno.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

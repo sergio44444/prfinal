@@ -1,0 +1,30 @@
+{
+  "proyectoTfc1App": {
+    "alumno": {
+      "home": {
+        "title": "Alumnos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Alumno",
+        "createOrEditLabel": "Create or edit a Alumno",
+        "notFound": "No Alumnos found"
+      },
+      "created": "A new Alumno is created with identifier {{ param }}",
+      "updated": "A Alumno is updated with identifier {{ param }}",
+      "deleted": "A Alumno is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Alumno {{ id }}?"
+      },
+      "detail": {
+        "title": "Alumno"
+      },
+      "id": "ID",
+      "dni": "Dni",
+      "nombre": "Nombre",
+      "apellido": "Apellido",
+      "tutor": "Tutor",
+      "centro": "Centro",
+      "empresa": "Empresa",
+      "ciclo": "Ciclo"
+    }
+  }
+}

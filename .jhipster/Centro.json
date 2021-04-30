@@ -1,0 +1,70 @@
+{
+  "name": "Centro",
+  "fields": [
+    {
+      "fieldName": "denominacion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codigo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "domicilio",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "localidad",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "municipio",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "provincia",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codigoPostal",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "director",
+      "otherEntityRelationshipName": "centro",
+      "relationshipName": "director",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tutor",
+      "otherEntityRelationshipName": "centro",
+      "relationshipName": "tutor"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "ciclo",
+      "otherEntityRelationshipName": "centro",
+      "relationshipName": "ciclo"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "alumno",
+      "otherEntityRelationshipName": "centro",
+      "relationshipName": "alumno"
+    }
+  ],
+  "entityTableName": "centro",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210427103625"
+}

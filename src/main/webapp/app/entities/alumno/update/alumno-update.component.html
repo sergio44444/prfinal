@@ -1,0 +1,101 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-alumno-heading" data-cy="AlumnoCreateUpdateHeading" jhiTranslate="proyectoTfc1App.alumno.home.createOrEditLabel">
+        Create or edit a Alumno
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="proyectoTfc1App.alumno.dni" for="field_dni">Dni</label>
+          <input type="text" class="form-control" name="dni" id="field_dni" data-cy="dni" formControlName="dni" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="proyectoTfc1App.alumno.nombre" for="field_nombre">Nombre</label>
+          <input type="text" class="form-control" name="nombre" id="field_nombre" data-cy="nombre" formControlName="nombre" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="proyectoTfc1App.alumno.apellido" for="field_apellido">Apellido</label>
+          <input type="text" class="form-control" name="apellido" id="field_apellido" data-cy="apellido" formControlName="apellido" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="proyectoTfc1App.alumno.tutor" for="field_tutor">Tutor</label>
+          <select class="form-control" id="field_tutor" data-cy="tutor" name="tutor" formControlName="tutor">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="tutorOption.id === editForm.get('tutor')!.value?.id ? editForm.get('tutor')!.value : tutorOption"
+              *ngFor="let tutorOption of tutorsSharedCollection; trackBy: trackTutorById"
+            >
+              {{ tutorOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="proyectoTfc1App.alumno.centro" for="field_centro">Centro</label>
+          <select class="form-control" id="field_centro" data-cy="centro" name="centro" formControlName="centro">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="centroOption.id === editForm.get('centro')!.value?.id ? editForm.get('centro')!.value : centroOption"
+              *ngFor="let centroOption of centrosSharedCollection; trackBy: trackCentroById"
+            >
+              {{ centroOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="proyectoTfc1App.alumno.empresa" for="field_empresa">Empresa</label>
+          <select class="form-control" id="field_empresa" data-cy="empresa" name="empresa" formControlName="empresa">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="empresaOption.id === editForm.get('empresa')!.value?.id ? editForm.get('empresa')!.value : empresaOption"
+              *ngFor="let empresaOption of empresasSharedCollection; trackBy: trackEmpresaById"
+            >
+              {{ empresaOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="proyectoTfc1App.alumno.ciclo" for="field_ciclo">Ciclo</label>
+          <select class="form-control" id="field_ciclo" data-cy="ciclo" name="ciclo" formControlName="ciclo">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="cicloOption.id === editForm.get('ciclo')!.value?.id ? editForm.get('ciclo')!.value : cicloOption"
+              *ngFor="let cicloOption of ciclosSharedCollection; trackBy: trackCicloById"
+            >
+              {{ cicloOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

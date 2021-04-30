@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="centro">
+      <h2 data-cy="centroDetailsHeading"><span jhiTranslate="proyectoTfc1App.centro.detail.title">Centro</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ centro.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.centro.denominacion">Denominacion</span></dt>
+        <dd>
+          <span>{{ centro.denominacion }}</span>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.centro.codigo">Codigo</span></dt>
+        <dd>
+          <span>{{ centro.codigo }}</span>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.centro.domicilio">Domicilio</span></dt>
+        <dd>
+          <span>{{ centro.domicilio }}</span>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.centro.localidad">Localidad</span></dt>
+        <dd>
+          <span>{{ centro.localidad }}</span>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.centro.municipio">Municipio</span></dt>
+        <dd>
+          <span>{{ centro.municipio }}</span>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.centro.provincia">Provincia</span></dt>
+        <dd>
+          <span>{{ centro.provincia }}</span>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.centro.codigoPostal">Codigo Postal</span></dt>
+        <dd>
+          <span>{{ centro.codigoPostal }}</span>
+        </dd>
+        <dt><span jhiTranslate="proyectoTfc1App.centro.director">Director</span></dt>
+        <dd>
+          <div *ngIf="centro.director">
+            <a [routerLink]="['/director', centro.director?.id, 'view']">{{ centro.director?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/centro', centro.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

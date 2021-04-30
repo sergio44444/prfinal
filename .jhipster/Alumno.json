@@ -1,0 +1,53 @@
+{
+  "name": "Alumno",
+  "fields": [
+    {
+      "fieldName": "dni",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apellido",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tutor",
+      "otherEntityRelationshipName": "alumno",
+      "relationshipName": "tutor"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "centro",
+      "otherEntityRelationshipName": "alumno",
+      "relationshipName": "centro"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "empresa",
+      "otherEntityRelationshipName": "alumno",
+      "relationshipName": "empresa"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "ciclo",
+      "otherEntityRelationshipName": "alumno",
+      "relationshipName": "ciclo"
+    }
+  ],
+  "entityTableName": "alumno",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210427103621"
+}

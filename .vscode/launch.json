@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Proyecto_tfc_1App<Proyecto_tfc_1>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.mycompany.myapp.proyecto_tfc_1App",
+            "projectName": "concesionariofinal",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ProyectoTfc1App<proyecto-tfc-1>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.mycompany.myapp.ProyectoTfc1App",
+            "projectName": "proyecto-tfc-1",
+            "args": ""
+        }
+    ]
+}

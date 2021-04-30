@@ -1,0 +1,35 @@
+{
+  "name": "Empresa",
+  "fields": [
+    {
+      "fieldName": "numeroConvenio",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "localidad",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tutor",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "alumno",
+      "otherEntityRelationshipName": "empresa",
+      "relationshipName": "alumno"
+    }
+  ],
+  "entityTableName": "empresa",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210427103626"
+}

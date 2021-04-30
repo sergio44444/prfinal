@@ -1,8 +1,7 @@
 <nav data-cy="navbar" class="navbar navbar-dark navbar-expand-md bg-dark">
   <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
     <span class="logo-img"></span>
-    <span jhiTranslate="global.title" class="navbar-title">Proyecto_tfc_1</span>
-    <span class="navbar-version">{{ version }}</span>
+    <span class="navbar-title">IES Enrique Tierno Galvan (Madrid)</span>
   </a>
   <a
     class="navbar-toggler d-lg-none"
@@ -14,7 +13,6 @@
     aria-label="Toggle navigation"
     (click)="toggleNavbar()"
   >
-    <fa-icon icon="bars"></fa-icon>
   </a>
   <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
     <ul class="navbar-nav ml-auto">
@@ -42,9 +40,140 @@
           </span>
         </a>
         <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="alumno"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="database" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.alumno">Alumno</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="tutor"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="database" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.tutor">Tutor</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="director"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="database" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.director">Director</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="ciclo"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="database" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.ciclo">Ciclo</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="centro"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="database" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.centro">Centro</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="empresa"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="database" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.empresa">Empresa</span>
+            </a>
+          </li>
+
           <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
         </ul>
       </li>
+
+      <li
+        *ngSwitchCase="true"
+        ngbDropdown
+        class="nav-item dropdown pointer"
+        display="dynamic"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
+          <span>
+            <fa-icon icon="book"></fa-icon>
+            <span>Documentos</span>
+          </span>
+        </a>
+        <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="alumno"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span>ANEXO 2.1. Relación de alumnos ordinario</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="tutor"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span>ANEXO 2.2. Relación de alumnos DAT</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="tutor"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="cloud" [fixedWidth]="true"></fa-icon>
+              <span>Generar Todos</span>
+            </a>
+          </li>
+
+          <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+        </ul>
+      </li>
+
       <li
         *jhiHasAnyAuthority="'ROLE_ADMIN'"
         ngbDropdown
@@ -55,7 +184,7 @@
       >
         <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu" data-cy="adminMenu">
           <span>
-            <fa-icon icon="users-cog"></fa-icon>
+            <fa-icon icon="lock"></fa-icon>
             <span jhiTranslate="global.menu.admin.main">Administration</span>
           </span>
         </a>
