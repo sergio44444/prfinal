@@ -23,6 +23,8 @@ export class EmpresaComponent implements OnInit {
   predicate!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
+  searchTerm!: string;
+  searchTerm2!: string;
 
   constructor(
     protected empresaService: EmpresaService,
@@ -34,6 +36,8 @@ export class EmpresaComponent implements OnInit {
   loadPage(page?: number, dontNavigate?: boolean): void {
     this.isLoading = true;
     const pageToLoad: number = page ?? this.page ?? 1;
+    this.searchTerm = '';
+    this.searchTerm2 = '';
 
     this.empresaService
       .query({

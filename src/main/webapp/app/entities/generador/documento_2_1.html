@@ -1,0 +1,18 @@
+<html>
+  <head> </head>
+
+  <body>
+    <div class="form-group">
+      <label class="form-control-label" jhiTranslate="proyectoTfc1App.alumno.ciclo" for="field_ciclo">Ciclo</label>
+      <select class="form-control" id="field_ciclo" data-cy="ciclo" name="ciclo" formControlName="ciclo">
+        <option [ngValue]="null"></option>
+        <option
+          [ngValue]="cicloOption.id === editForm.get('ciclo')!.value?.id ? editForm.get('ciclo')!.value : cicloOption"
+          *ngFor="let cicloOption of ciclosSharedCollection; trackBy: trackCicloById"
+        >
+          {{ cicloOption.id }} - {{ cicloOption.nombre }} - {{ cicloOption.clave }}
+        </option>
+      </select>
+    </div>
+  </body>
+</html>

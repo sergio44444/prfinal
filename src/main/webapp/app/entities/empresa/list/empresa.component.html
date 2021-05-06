@@ -20,6 +20,22 @@
     </div>
   </h2>
 
+  <div>
+    <table>
+      <tr>
+        <td>
+          <label class="form-control-label">Filtrar por Nombre:</label>
+          <input type="text" class="form-control" name="nombreCliente" [(ngModel)]="searchTerm" />
+        </td>
+
+        <td>
+          <label class="form-control-label">Filtrar por Apellido:</label>
+          <input type="text" class="form-control" name="dniCliente" [(ngModel)]="searchTerm2" />
+        </td>
+      </tr>
+    </table>
+  </div>
+
   <jhi-alert-error></jhi-alert-error>
 
   <jhi-alert></jhi-alert>
@@ -46,7 +62,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let empresa of empresas; trackBy: trackId" data-cy="entityTable">
+        <tr *ngFor="let empresa of empresas | empresafiltro: searchTerm:searchTerm2; trackBy: trackId" data-cy="entityTable">
           <td>
             <a [routerLink]="['/empresa', empresa.id, 'view']">{{ empresa.id }}</a>
           </td>

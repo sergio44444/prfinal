@@ -36,7 +36,7 @@
               [ngValue]="tutorOption.id === editForm.get('tutor')!.value?.id ? editForm.get('tutor')!.value : tutorOption"
               *ngFor="let tutorOption of tutorsSharedCollection; trackBy: trackTutorById"
             >
-              {{ tutorOption.id }}
+              {{ tutorOption.id }} - {{ tutorOption.nombre }}
             </option>
           </select>
         </div>
@@ -49,7 +49,7 @@
               [ngValue]="centroOption.id === editForm.get('centro')!.value?.id ? editForm.get('centro')!.value : centroOption"
               *ngFor="let centroOption of centrosSharedCollection; trackBy: trackCentroById"
             >
-              {{ centroOption.id }}
+              {{ centroOption.codigo }} - {{ centroOption.denominacion }}
             </option>
           </select>
         </div>
@@ -62,7 +62,7 @@
               [ngValue]="empresaOption.id === editForm.get('empresa')!.value?.id ? editForm.get('empresa')!.value : empresaOption"
               *ngFor="let empresaOption of empresasSharedCollection; trackBy: trackEmpresaById"
             >
-              {{ empresaOption.id }}
+              {{ empresaOption.id }} - {{ empresaOption.numeroConvenio }}
             </option>
           </select>
         </div>
@@ -75,7 +75,7 @@
               [ngValue]="cicloOption.id === editForm.get('ciclo')!.value?.id ? editForm.get('ciclo')!.value : cicloOption"
               *ngFor="let cicloOption of ciclosSharedCollection; trackBy: trackCicloById"
             >
-              {{ cicloOption.id }}
+              {{ cicloOption.id }} - {{ cicloOption.nombre }} - {{ cicloOption.clave }}
             </option>
           </select>
         </div>
