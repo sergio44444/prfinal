@@ -30,6 +30,7 @@ import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 import { Documento21Component } from './documento21/documento21.component';
 import { RouterModule, Routes } from '@angular/router';
+import { Anexo21Component } from './anexo21/anexo21.component';
 
 const routes: Routes = [{ path: 'documento21', component: Documento21Component, pathMatch: 'full' }];
 
@@ -72,6 +73,7 @@ const routes: Routes = [{ path: 'documento21', component: Documento21Component, 
     ActiveMenuDirective,
     FooterComponent,
     Documento21Component,
+    Anexo21Component,
   ],
   bootstrap: [MainComponent],
 })

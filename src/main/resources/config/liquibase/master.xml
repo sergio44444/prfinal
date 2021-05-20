@@ -26,7 +26,7 @@
     <include file="config/liquibase/changelog/20210427103622_added_entity_constraints_Tutor.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210427103624_added_entity_constraints_Ciclo.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210427103625_added_entity_constraints_Centro.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20210427103626_added_entity_constraints_Empresa.xml" relativeToChangelogFile="false"/>
+    <!--<include file="config/liquibase/changelog/20210427103626_added_entity_constraints_Empresa.xml" relativeToChangelogFile="false"/>-->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

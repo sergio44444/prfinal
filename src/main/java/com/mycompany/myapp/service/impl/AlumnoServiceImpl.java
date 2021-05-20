@@ -76,4 +76,9 @@ public class AlumnoServiceImpl implements AlumnoService {
         log.debug("Request to delete Alumno : {}", id);
         alumnoRepository.deleteById(id);
     }
+
+    @Override
+    public Page<Alumno> findByDni(Pageable pageable, String dni) {
+        return alumnoRepository.findByDni(pageable, dni);
+    }
 }

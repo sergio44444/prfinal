@@ -44,6 +44,17 @@ export class AlumnoService {
     return this.http.get<IAlumno[]>(url, { params: options, observe: 'response' });
   }
 
+  queryalumnoxdni(dni?: string | undefined | null, req?: any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    let url = '';
+    if (dni !== '' && dni) {
+      url = `${this.resourceUrl}?dni=${dni}`;
+    } else {
+      url = this.resourceUrl;
+    }
+    return this.http.get<IAlumno[]>(url, { params: options, observe: 'response' });
+  }
+
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }

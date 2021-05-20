@@ -177,4 +177,12 @@ public class AlumnoResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
     }
+
+    @GetMapping("/xdni")
+    public ResponseEntity<List<Alumno>> findByxdni(Pageable pageable, @PathVariable @Nullable String dni) {
+        log.debug("REST request to get a page of Coches");
+        Page<Alumno> page = alumnoService.findByDni(pageable, dni);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
 }

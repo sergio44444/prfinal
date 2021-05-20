@@ -17,7 +17,7 @@ export interface IAlumno {
 export class Alumno implements IAlumno {
   constructor(
     public id?: number,
-    public dni?: string | null,
+    public dni?: string | null | undefined,
     public nombre?: string | null,
     public apellido?: string | null,
     public tutor?: ITutor | null,
