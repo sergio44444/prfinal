@@ -28,15 +28,12 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
-import { Documento21Component } from './documento21/documento21.component';
+
 import { RouterModule, Routes } from '@angular/router';
 import { Anexo21Component } from './anexo21/anexo21.component';
 
-const routes: Routes = [{ path: 'documento21', component: Documento21Component, pathMatch: 'full' }];
-
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes),
     BrowserModule,
     SharedModule,
     HomeModule,
@@ -72,7 +69,6 @@ const routes: Routes = [{ path: 'documento21', component: Documento21Component, 
     PageRibbonComponent,
     ActiveMenuDirective,
     FooterComponent,
-    Documento21Component,
     Anexo21Component,
   ],
   bootstrap: [MainComponent],

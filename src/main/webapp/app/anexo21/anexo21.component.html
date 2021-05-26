@@ -1,130 +1,54 @@
-<div>
-  <h2 id="page-heading" data-cy="AlumnoHeading">
-    <span jhiTranslate="proyectoTfc1App.alumno.home.title">Alumnos</span>
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm">
+      <h2 id="jhi-venta-heading" data-cy="VentaCreateUpdateHeading">ANEXO 2.1. Relación de alumnos ordinario</h2>
 
-    <div class="d-flex justify-content-end">
-      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
-        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-        <span jhiTranslate="proyectoTfc1App.alumno.home.refreshListLabel">Refresh List</span>
-      </button>
+      <div class="form-group">
+        <label class="form-control-label" for="field_alumno">Selecciona Alumno:</label>
+        <select (change)="funcion($event)" class="form-control" id="field_alumno" data-cy="alumno" name="alumno" formControlName="alumno">
+          <option *ngFor="let alumnoOption of alumnosSharedCollection; trackBy: trackAlumnoById">
+            {{ alumnoOption.id }}-{{ alumnoOption.dni }}-{{ alumnoOption.nombre }}
+          </option>
+        </select>
+      </div>
 
-      <button
-        id="jh-create-entity"
-        data-cy="entityCreateButton"
-        class="btn btn-primary jh-create-entity create-alumno"
-        [routerLink]="['/alumno/new']"
-      >
-        <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="proyectoTfc1App.alumno.home.createLabel"> Create a new Alumno </span>
-      </button>
-    </div>
-  </h2>
+      <div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID Alumno</th>
+              <th scope="col">Nombre Alumno</th>
+              <th scope="col">Apellido Alumno</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="traerdatos != undefined">
+              <td>{{ traerdatos.id }}</td>
+              <td>{{ traerdatos.nombre }}</td>
+              <td>{{ traerdatos.apellido }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-  <div class="form-group">
-    <label class="form-control-label">Filtrar por CLAVE de Ciclo:</label>
-    <input type="text" class="form-control" name="nombrecoche" [(ngModel)]="filtrociclo" style="width: 15%" (ngModelChange)="loadPage()" />
-  </div>
-  <jhi-alert-error></jhi-alert-error>
-
-  <jhi-alert></jhi-alert>
-
-  <div class="alert alert-warning" id="no-result" *ngIf="alumnos?.length === 0">
-    <span jhiTranslate="proyectoTfc1App.alumno.home.notFound">No alumnos found</span>
-  </div>
-
-  <div class="table-responsive" id="entities" *ngIf="alumnos && alumnos.length > 0">
-    <table class="table table-striped" aria-describedby="page-heading">
-      <thead>
-        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="dni"><span jhiTranslate="proyectoTfc1App.alumno.dni">Dni</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="nombre">
-            <span jhiTranslate="proyectoTfc1App.alumno.nombre">Nombre</span> <fa-icon icon="sort"></fa-icon>
-          </th>
-          <th scope="col" jhiSortBy="apellido">
-            <span jhiTranslate="proyectoTfc1App.alumno.apellido">Apellido</span> <fa-icon icon="sort"></fa-icon>
-          </th>
-          <th scope="col" jhiSortBy="tutor.id">
-            <span jhiTranslate="proyectoTfc1App.alumno.tutor">Tutore</span> <fa-icon icon="sort"></fa-icon>
-          </th>
-          <th scope="col" jhiSortBy="centro.id">
-            <span jhiTranslate="proyectoTfc1App.alumno.centro">Centro</span> <fa-icon icon="sort"></fa-icon>
-          </th>
-          <th scope="col" jhiSortBy="empresa.id">
-            <span jhiTranslate="proyectoTfc1App.alumno.empresa">Empresa</span> <fa-icon icon="sort"></fa-icon>
-          </th>
-          <th scope="col" jhiSortBy="ciclo.id">
-            <span jhiTranslate="proyectoTfc1App.alumno.ciclo">Ciclo</span> <fa-icon icon="sort"></fa-icon>
-          </th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let alumno of alumnos; trackBy: trackId" data-cy="entityTable">
-          <td>
-            <a [routerLink]="['/alumno', alumno.id, 'view']">{{ alumno.id }}</a>
-          </td>
-          <td>{{ alumno.dni }}</td>
-          <td>{{ alumno.nombre }}</td>
-          <td>{{ alumno.apellido }}</td>
-          <td>
-            <div *ngIf="alumno.tutor">
-              <a [routerLink]="['/tutor', alumno.tutor?.id, 'view']">{{ alumno.tutor?.id }}</a>
-            </div>
-          </td>
-          <td>
-            <div *ngIf="alumno.centro">
-              <a [routerLink]="['/centro', alumno.centro?.id, 'view']">{{ alumno.centro?.codigo }}</a>
-            </div>
-          </td>
-          <td>
-            <div *ngIf="alumno.empresa">
-              <a [routerLink]="['/empresa', alumno.empresa?.id, 'view']">{{ alumno.empresa?.numeroConvenio }}</a>
-            </div>
-          </td>
-          <td>
-            <div *ngIf="alumno.ciclo">
-              <a [routerLink]="['/ciclo', alumno.ciclo?.id, 'view']">{{ alumno.ciclo?.nombre }}-{{ alumno.ciclo?.clave }}</a>
-            </div>
-          </td>
-          <td class="text-right">
-            <div class="btn-group">
-              <button type="submit" [routerLink]="['/alumno', alumno.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
-                <fa-icon icon="eye"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-              </button>
-
-              <button type="submit" [routerLink]="['/alumno', alumno.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
-                <fa-icon icon="pencil-alt"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-              </button>
-
-              <button type="submit" (click)="delete(alumno)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
-                <fa-icon icon="times"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-              </button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div *ngIf="alumnos && alumnos.length > 0">
-    <div class="row justify-content-center">
-      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
-    </div>
-
-    <div class="row justify-content-center">
-      <ngb-pagination
-        [collectionSize]="totalItems"
-        [(page)]="ngbPaginationPage"
-        [pageSize]="itemsPerPage"
-        [maxSize]="5"
-        [rotate]="true"
-        [boundaryLinks]="true"
-        (pageChange)="loadPage($event)"
-      ></ngb-pagination>
-    </div>
+      <div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID Tutor</th>
+              <th scope="col">Nombre Tutor</th>
+              <th scope="col">Apellido Tutor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="traerdatos != undefined && traerdatos.tutor != undefined">
+              <td>{{ traerdatos.tutor.id }}</td>
+              <td>{{ traerdatos.tutor.nombre }}</td>
+              <td>{{ traerdatos.tutor.apellido }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
   </div>
 </div>

@@ -178,7 +178,7 @@ public class AlumnoResource {
             .build();
     }
 
-    @GetMapping("/xdni")
+    @GetMapping("/alumnos/{dni}")
     public ResponseEntity<List<Alumno>> findByxdni(Pageable pageable, @PathVariable @Nullable String dni) {
         log.debug("REST request to get a page of Coches");
         Page<Alumno> page = alumnoService.findByDni(pageable, dni);
