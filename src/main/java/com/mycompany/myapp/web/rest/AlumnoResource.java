@@ -3,6 +3,7 @@ package com.mycompany.myapp.web.rest;
 import com.mycompany.myapp.domain.Alumno;
 import com.mycompany.myapp.repository.AlumnoRepository;
 import com.mycompany.myapp.service.AlumnoService;
+import com.mycompany.myapp.service.mapper.GenerarPDFService;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import io.micrometer.core.lang.Nullable;
 import java.net.URI;
@@ -12,11 +13,11 @@ import java.util.Objects;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -42,9 +43,13 @@ public class AlumnoResource {
 
     private final AlumnoRepository alumnoRepository;
 
-    public AlumnoResource(AlumnoService alumnoService, AlumnoRepository alumnoRepository) {
+    @Autowired
+    private final GenerarPDFService generarpdfService;
+
+    public AlumnoResource(AlumnoService alumnoService, AlumnoRepository alumnoRepository, GenerarPDFService generarpdfService) {
         this.alumnoService = alumnoService;
         this.alumnoRepository = alumnoRepository;
+        this.generarpdfService = generarpdfService;
     }
 
     /**
@@ -65,6 +70,13 @@ public class AlumnoResource {
             .created(new URI("/api/alumnos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
+    }
+
+    @PostMapping("/alumnos/generar")
+    public ResponseEntity<Alumno> generate(@RequestBody Alumno alumno) throws URISyntaxException {
+        log.debug("REST request to partial update Alumno partially : {}, {}", alumno);
+        generarpdfService.generar(alumno);
+        return null;
     }
 
     /**
@@ -176,13 +188,5 @@ public class AlumnoResource {
             .noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
-    }
-
-    @GetMapping("/alumnos/{dni}")
-    public ResponseEntity<List<Alumno>> findByxdni(Pageable pageable, @PathVariable @Nullable String dni) {
-        log.debug("REST request to get a page of Coches");
-        Page<Alumno> page = alumnoService.findByDni(pageable, dni);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 }

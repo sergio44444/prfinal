@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { isPresent } from 'app/core/util/operators';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
 import { createRequestOption } from 'app/core/request/request-util';
-import { IAlumno, getAlumnoIdentifier } from '../alumno.model';
+import { IAlumno, getAlumnoIdentifier, Alumno } from '../alumno.model';
 import { map } from 'rxjs/operators';
 
 export type EntityResponseType = HttpResponse<IAlumno>;
@@ -31,6 +31,15 @@ export class AlumnoService {
 
   find(id: number): Observable<EntityResponseType> {
     return this.http.get<IAlumno>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    // eslint-disable-next-line no-console
+    console.log(id);
+  }
+
+  generate(alumno: Alumno): Observable<EntityResponseType> {
+    return this.http.post<IAlumno>(`${this.resourceUrl}/generar`, alumno, { observe: 'response' });
+
+    // eslint-disable-next-line no-console
+    console.log(alumno.apellido?.toString);
   }
 
   query(clave?: string, req?: any): Observable<EntityArrayResponseType> {

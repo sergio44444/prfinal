@@ -56,6 +56,11 @@ export class Anexo21Component implements OnInit {
         this.traerdatos = res.body ?? [];
         // eslint-disable-next-line no-console
         console.log(this.traerdatos?.tutor?.id);
+        if (this.traerdatos != null) {
+          this.alumnoService.generate(this.traerdatos);
+          // eslint-disable-next-line no-console
+          console.log(this.traerdatos);
+        }
       });
     }
   }

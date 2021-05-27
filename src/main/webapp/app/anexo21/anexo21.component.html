@@ -49,6 +49,22 @@
           </tbody>
         </table>
       </div>
+      <div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Nombre Centro</th>
+              <th scope="col">Codigo centro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="traerdatos != undefined && traerdatos.centro != undefined">
+              <td>{{ traerdatos.centro.denominacion }}</td>
+              <td>{{ traerdatos.centro.codigo }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </form>
   </div>
 </div>
